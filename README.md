@@ -29,6 +29,7 @@ A multi-page Power BI report that analyses the Netflix catalogue: how many movie
 - **Drama (2,901 titles) and Comedy (2,269) lead the genre mix**, followed by Thriller (1,178), Action (1,053), Romance (958) and Documentation (910).
 - **A quarter of the catalogue is mature content** (TV-MA, R or NC-17), and TV-MA is the most common rating among those that are recorded.
 - **Age certification is missing for 2,610 titles (45%)**, which is the largest data-quality gap in the dataset and shows up as the "Missing in Data" bar.
+- **The United States is the biggest source of titles** with 2,327 (40% of the catalogue), followed by India (629), the United Kingdom (406), Japan (291) and France (248). India is the main outlier: 585 of its 629 titles are movies.
 - **Only 11% of titles are co-productions**, so most of the catalogue comes from a single production country.
 - **Indian actors dominate the most-frequent-cast list.** Seven of the top ten are Indian performers, led by Shah Rukh Khan with 30 titles, ahead of Anupam Kher, Boman Irani and Kareena Kapoor Khan (25 each).
 - **No single director dominates.** The most prolific are Raúl Campos (21 titles) and Jan Suter (20), and the top ten are all within 8 to 21 titles.
@@ -38,7 +39,7 @@ A multi-page Power BI report that analyses the Netflix catalogue: how many movie
 | Page | What it shows |
 |---|---|
 | **Overview** | Catalogue, movie and TV show KPIs, titles by release year and type with a trend line, movie vs TV show ratio and titles by genre |
-| **Geography** | Production-country and co-production view with a map, top content hubs and a country table |
+| **Geography** | Production-country and co-production view: a world map, a Top 10 Content Hubs chart and a country table with titles, movies, TV shows and co-production share |
 | **Talent and Ratings** | Mature and family-friendly counts, maturity rating distribution (movies vs TV series), top 10 directors and most frequent cast members |
 
 ## Dashboard features
@@ -54,7 +55,7 @@ A multi-page Power BI report that analyses the Netflix catalogue: how many movie
 ## What I did
 
 1. **Prepared the data (Power Query):** loaded the Titles and Credits tables and cleaned genres, production countries and age certifications so each can be analysed on its own.
-2. **Modelled the data:** linked Titles to Credits and to lookup tables for genre and country.
+2. **Modelled the data:** linked Titles to Credits and used bridge tables (`TitleGenreBridge`, `TitleCountryBridge`) for the many-to-many links between titles, genres and countries, with the cross-filter direction set so a country or genre selection correctly filters title counts.
 3. **Wrote DAX measures** for total titles, movie and TV show counts and shares, co-production %, mature content %, and cast and director counts.
 4. **Designed the report** with a shared slicer panel, a custom background and a consistent theme across pages.
 5. **Added drill-down visuals** for genres, maturity ratings, directors and cast.
@@ -83,6 +84,7 @@ This project is for learning and portfolio purposes only and is not affiliated w
 
 ## More screenshots
 
+![Geography](images/3-geography.png)
 ![Talent and Ratings](images/2-talent-and-ratings.png)
 
 ## How to open
